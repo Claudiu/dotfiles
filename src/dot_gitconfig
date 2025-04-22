@@ -1,0 +1,6 @@
+[user]
+        name = claudiu
+        email = hello@claudiutasca.com
+
+[core]
+    editor = "/usr/bin/nvim"
