@@ -1,0 +1,112 @@
+# ███████╗███████╗██╗  ██╗    ██████╗ ██████╗ ███╗   ██╗███████╗██╗ ██████╗
+# ╚══███╔╝██╔════╝██║  ██║    ██╔══██╗██╔══██╗████╗  ██║██╔════╝██║██╔════╝
+#   ███╔╝ ███████╗███████║    ██║  ██║██████╔╝██╔██╗ ██║█████╗  ██║██║  ███╗
+#  ███╔╝  ╚════██║██╔══██║    ██║  ██║██╔═══╝ ██║╚██╗██║██╔══╝  ██║██║   ██║
+# ███████╗███████║██║  ██║    ██████╔╝██║     ██║ ╚████║██║     ██║╚██████╔╝
+# ╚══════╝╚══════╝╚═╝  ╚═╝    ╚═════╝ ╚═╝     ╚═╝  ╚═══╝╚═╝     ╚═╝ ╚═════╝
+# Catppuccin Mocha Theme for ZSH
+
+# Enable Powerlevel10k instant prompt
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+#---------------------------
+# Zinit Plugin Manager Setup
+#---------------------------
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+if [ ! -d "$ZINIT_HOME" ]; then
+   mkdir -p "$(dirname $ZINIT_HOME)"
+   git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+fi
+source "${ZINIT_HOME}/zinit.zsh"
+
+#---------------------------
+# Environment Variables
+#---------------------------
+export PATH="$HOME/.local/bin:$PATH"
+export EDITOR="nvim"
+export VISUAL="nvim"
+export TERM="xterm-256color"
+export HISTSIZE=10000
+export HISTFILE=~/.zsh_history
+export SAVEHIST=$HISTSIZE
+export HISTDUP=erase
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+#---------------------------
+# Plugin Loading
+#---------------------------
+# Theme
+zinit ice depth=1
+zinit light romkatv/powerlevel10k
+
+# Completion and syntax
+zinit light zsh-users/zsh-syntax-highlighting
+zinit light zsh-users/zsh-completions
+zinit light zsh-users/zsh-autosuggestions
+zinit light Aloxaf/fzf-tab
+
+# Oh My Zsh components
+zinit snippet OMZL::git.zsh
+zinit snippet OMZP::git
+zinit snippet OMZP::sudo
+zinit snippet OMZP::archlinux
+
+# Load completions
+fpath+=~/.zfunc
+autoload -Uz compinit && compinit
+zinit cdreplay -q
+
+#---------------------------
+# History Configuration
+#---------------------------
+setopt appendhistory
+setopt sharehistory
+setopt hist_ignore_space
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_ignore_dups
+setopt hist_find_no_dups
+
+#---------------------------
+# Aliases
+#---------------------------
+alias ls='lsd --color=auto'
+alias ll='lsd -la'
+alias la='lsd -A'
+alias l='lsd -CF'
+alias vim='nvim'
+alias c='clear'
+alias grep='grep --color=auto'
+alias diff='diff --color=auto'
+alias ip='ip --color=auto'
+alias cat='bat --style=plain --paging=never'
+alias cp='cp -iv'
+alias mv='mv -iv'
+alias rm='rm -v'
+alias mkdir='mkdir -pv'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+
+#---------------------------
+# Tool Integration
+#---------------------------
+# Zoxide (smart cd)
+eval "$(zoxide init zsh)"
+
+# Bun JavaScript runtime completions
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
+
+#---------------------------
+# Theme Configuration
+#---------------------------
+# Load Powerlevel10k config
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Enable dircolors with Catppuccin Mocha theme if available
+if [ -f "$HOME/.dir_colors" ]; then
+  eval "$(dircolors $HOME/.dir_colors)"
+fi

@@ -1,0 +1,27 @@
+{
+    "recommendations": [
+        "catppuccin.catppuccin-vsc",
+        "catppuccin.catppuccin-vsc-icons",
+        "ms-vscode.live-server",
+        "rust-lang.rust-analyzer",
+        "golang.go",
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "svelte.svelte-vscode",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "editorconfig.editorconfig",
+        "streetsidesoftware.code-spell-checker",
+        "eamodio.gitlens",
+        "oderwat.indent-rainbow",
+        "yzhang.markdown-all-in-one",
+        "tamasfe.even-better-toml",
+        "wayou.vscode-todo-highlight",
+        "gruntfuggly.todo-tree",
+        "visualstudioexptteam.vscodeintellicode",
+        "redhat.vscode-yaml",
+        "aaron-bond.better-comments",
+        "christian-kohler.path-intellisense",
+        "ms-vsliveshare.vsliveshare"
+    ]
+}

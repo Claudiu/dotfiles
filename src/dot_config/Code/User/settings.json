@@ -1,0 +1,74 @@
+{
+    "workbench.colorTheme": "Catppuccin Mocha",
+    "editor.fontFamily": "monospace",
+    "editor.fontSize": 14,
+    "editor.lineHeight": 1.5,
+    "editor.rulers": [80],
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll": true
+    },
+    "editor.minimap.enabled": false,
+    "editor.cursorBlinking": "solid",
+    "editor.cursorSmoothCaretAnimation": "on",
+    "editor.renderLineHighlight": "all",
+    "editor.suggestSelection": "first",
+    "editor.scrollBeyondLastLine": false,
+    "editor.stickyScroll.enabled": true,
+
+    "window.titleBarStyle": "custom",
+    "window.zoomLevel": 0,
+
+    "terminal.integrated.fontFamily": "JetBrainsMono Nerd Font Mono",
+    "terminal.integrated.cursorBlinking": true,
+
+    "files.autoSave": "onFocusChange",
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+
+    "explorer.confirmDragAndDrop": false,
+    "explorer.confirmDelete": true,
+
+    "workbench.editor.enablePreview": false,
+    "workbench.startupEditor": "none",
+    "workbench.iconTheme": "catppuccin-mocha",
+
+    "telemetry.telemetryLevel": "off",
+
+    // Extensions settings
+    "extensions.ignoreRecommendations": true,
+
+    // Language specific settings
+    "[rust]": {
+        "editor.defaultFormatter": "rust-lang.rust-analyzer",
+        "editor.formatOnSave": true
+    },
+    "[python]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "ms-python.python"
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[go]": {
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true
+        }
+    },
+
+    // Integrated terminal settings
+    "terminal.integrated.defaultProfile.linux": "zsh",
+    "terminal.integrated.fontSize": 15,
+    "terminal.integrated.profiles.linux": {
+        "bash": {
+            "path": "zsh",
+            "icon": "terminal-zsh"
+        }
+    }
+}
