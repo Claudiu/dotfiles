@@ -1,3 +1,11 @@
+# Theme Configuration
 theme = catppuccin-mocha
-window-padding-x = 2
 
+# Window Dimensions (in character cells)
+window-height = 20
+window-width = 120
+
+font-size = 9.0
+
+background-opacity = 0.95
+window-decoration = server

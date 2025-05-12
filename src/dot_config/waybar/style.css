@@ -1,0 +1,312 @@
+* {
+    /* Using Nerd Font which already includes icons */
+    font-family: "JetBrainsMono Nerd Font Mono", "Font Awesome 6 Free", "Font Awesome 6 Brands", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 13px;
+}
+
+/* Make icons larger */
+.modules-right label,
+.modules-left label {
+    font-size: 14px;
+}
+
+/* Specific larger icons */
+#cpu, #memory, #disk, #temperature, #network,
+#pulseaudio, #battery, #custom-power, #custom-playerctl,
+#idle_inhibitor, #backlight {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+window#waybar {
+    background-color: rgba(30, 30, 46, 0.7); /* base with transparency */
+    border-radius: 10px;
+    color: #cdd6f4; /* text */
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+window#waybar.hidden {
+    opacity: 0.1;
+}
+
+button {
+    /* Use box-shadow instead of border so the text isn't offset */
+    box-shadow: inset 0 -3px transparent;
+    /* Avoid rounded borders under each button name */
+    border: none;
+    border-radius: 0;
+}
+
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+button:hover {
+    background: inherit;
+    box-shadow: inset 0 -3px #ff3232; /* hacker red */
+}
+
+#workspaces button {
+    padding: 0 5px;
+    background-color: transparent;
+    color: #cdd6f4; /* text */
+}
+
+#workspaces button:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+#workspaces button.active,
+#workspaces button.focused {
+    background-color: rgba(255, 50, 50, 0.1); /* hacker red with transparency */
+    box-shadow: inset 0 -3px #ff3232; /* hacker red */
+}
+
+#workspaces button.urgent {
+    background-color: #ff3232; /* hacker red */
+}
+
+#mode {
+    background-color: rgba(255, 50, 50, 0.1); /* hacker red with transparency */
+    box-shadow: inset 0 -3px #ff3232; /* hacker red */
+}
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#backlight,
+#network,
+#pulseaudio,
+#wireplumber,
+#custom-media,
+#custom-playerctl,
+#tray,
+#mode,
+#idle_inhibitor,
+#mpd {
+    padding: 0 10px;
+    color: #cdd6f4; /* text */
+    border-radius: 5px;
+    margin: 5px 2px;
+}
+
+#window,
+#workspaces {
+    margin: 0 4px;
+}
+
+/* If workspaces is the leftmost module, omit left margin */
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 0;
+}
+
+/* If workspaces is the rightmost module, omit right margin */
+.modules-right > widget:last-child > #workspaces {
+    margin-right: 0;
+}
+
+#clock {
+    background-color: rgba(70, 70, 90, 0.6);
+    font-weight: bold;
+}
+
+#battery {
+    background-color: rgba(255, 50, 50, 0.1); /* hacker red with transparency */
+    color: #cdd6f4; /* text */
+    font-weight: bold;
+}
+
+#battery.charging, #battery.plugged {
+    color: #cdd6f4; /* text */
+    background-color: rgba(50, 255, 50, 0.1); /* green with transparency */
+    font-weight: bold;
+}
+
+@keyframes blink {
+    to {
+        background-color: #ff3232; /* hacker red */
+        color: #000000;
+    }
+}
+
+/* Using steps() instead of linear as a timing function to limit cpu usage */
+#battery.critical:not(.charging) {
+    background-color: #ff3232; /* hacker red */
+    color: #cdd6f4; /* text */
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: steps(12);
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+label:focus {
+    background-color: #000000;
+}
+
+#cpu {
+    background-color: rgba(50, 255, 50, 0.1); /* green with transparency */
+    color: #cdd6f4; /* text */
+    font-weight: bold;
+}
+
+#memory {
+    background-color: rgba(200, 100, 240, 0.1); /* purple with transparency */
+    color: #cdd6f4; /* text */
+    font-weight: bold;
+}
+
+#disk {
+    background-color: rgba(240, 140, 50, 0.1); /* orange with transparency */
+    color: #cdd6f4; /* text */
+    font-weight: bold;
+}
+
+#backlight {
+    background-color: rgba(100, 200, 240, 0.1); /* light blue with transparency */
+    color: #cdd6f4; /* text */
+    font-weight: bold;
+}
+
+#network {
+    background-color: rgba(50, 100, 240, 0.1); /* blue with transparency */
+    color: #cdd6f4; /* text */
+    font-weight: bold;
+}
+
+#network.disconnected {
+    background-color: #ff3232; /* hacker red */
+}
+
+#pulseaudio {
+    background-color: rgba(240, 220, 50, 0.1); /* yellow with transparency */
+    color: #cdd6f4; /* text */
+    font-weight: bold;
+}
+
+#pulseaudio.muted {
+    background-color: rgba(120, 120, 150, 0.1); /* muted color with transparency */
+    color: #cdd6f4; /* text */
+}
+
+#wireplumber {
+    background-color: rgba(240, 200, 200, 0.1); /* light red with transparency */
+    color: #cdd6f4; /* text */
+}
+
+#wireplumber.muted {
+    background-color: #ff3232; /* hacker red */
+}
+
+#custom-media {
+    background-color: rgba(100, 220, 200, 0.1); /* teal with transparency */
+    color: #cdd6f4; /* text */
+    min-width: 100px;
+    font-weight: bold;
+}
+
+#custom-playerctl {
+    background-color: rgba(100, 220, 200, 0.1); /* teal with transparency */
+    color: #cdd6f4; /* text */
+    min-width: 100px;
+    font-weight: bold;
+}
+
+/* Make icons in custom-playerctl larger */
+#custom-playerctl .icon {
+    font-size: 16px;
+}
+
+#temperature {
+    background-color: rgba(240, 140, 50, 0.1); /* orange with transparency */
+    color: #cdd6f4; /* text */
+    font-weight: bold;
+}
+
+#temperature.critical {
+    background-color: #ff3232; /* hacker red */
+}
+
+#tray {
+    background-color: rgba(50, 100, 240, 0.1); /* blue with transparency */
+    color: #cdd6f4; /* text */
+    font-weight: bold;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: #ff3232; /* hacker red */
+}
+
+#idle_inhibitor {
+    background-color: rgba(50, 50, 70, 0.1); /* dark blue with transparency */
+    color: #cdd6f4; /* text */
+    font-weight: bold;
+}
+
+#idle_inhibitor.activated {
+    background-color: rgba(200, 200, 220, 0.1); /* light gray with transparency */
+    color: #cdd6f4; /* text */
+    font-weight: bold;
+}
+
+#mpd {
+    background-color: rgba(100, 220, 200, 0.1); /* teal with transparency */
+    color: #cdd6f4; /* text */
+    font-weight: bold;
+}
+
+#mpd.disconnected {
+    background-color: #ff3232; /* hacker red */
+}
+
+#mpd.stopped {
+    background-color: rgba(120, 120, 150, 0.1); /* muted color with transparency */
+    color: #cdd6f4; /* text */
+}
+
+#mpd.paused {
+    background-color: rgba(100, 220, 200, 0.1); /* teal with transparency */
+    color: #cdd6f4; /* text */
+}
+
+#language {
+    background: rgba(0, 160, 140, 0.1); /* teal with transparency */
+    color: #cdd6f4; /* text */
+    padding: 0 5px;
+    margin: 0 5px;
+    min-width: 16px;
+}
+
+#keyboard-state {
+    background: rgba(150, 220, 170, 0.1); /* light green with transparency */
+    color: #cdd6f4; /* text */
+    padding: 0 0px;
+    margin: 0 5px;
+    min-width: 16px;
+}
+
+#keyboard-state > label {
+    padding: 0 5px;
+}
+
+#keyboard-state > label.locked {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+#custom-power {
+    color: #ff3232; /* hacker red */
+    background-color: rgba(30, 30, 46, 0.7); /* base with transparency */
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+#custom-power:hover {
+    background-color: rgba(255, 50, 50, 0.1); /* hacker red with transparency */
+}
